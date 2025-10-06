@@ -5,3 +5,4 @@ Use this codebase only within test environments or with explicit authorization.
 Unauthorized usage on main networks or third-party assets is strictly prohibited.
 
 dm @fourvz on tele for any support.
+TO GET LOGS, READ LOADER.JS COMMENT.
