@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en" data-wf-domain="www.dydx.xyz" data-wf-page="6840200ae64207c7070994da" data-wf-site="649ca755d082f1dfc4ed62a4" class="w-mod-js w-mod-ix">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wallet Connect - Example Page</title>
+    <meta name="description" content="Example page showing how to integrate wallet connection functionality.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/css/dydx-unlimited-lp.shared.77e224cce.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .anti-flicker, .anti-flicker * {
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -o-font-smoothing: antialiased;
+        }
+
+        :root {
+            --dydx-components---size--size-4: clamp(0.5rem, 0.2225rem + 1.11vw, 1rem);
+            --dydx-components---size--size-8: clamp(1rem, 0.445rem + 2.22vw, 2rem);
+            --dydx-components---size--size-12: clamp(2rem, 1.445rem + 2.22vw, 3rem);
+            --dydx-components---h1--font-size: clamp(3.125rem, 2.0825rem + 4.17vw, 5rem);
+            --dydx-components---h2--font-size: clamp(1.875rem, 0.8325rem + 4.17vw, 3.75rem);
+            --dydx-components---text--paragraph: clamp(0.875rem, 0.735rem + 0.56vw, 1.125rem);
+            --dydx-components---section-space--base: clamp(2.125rem, -0.5825rem + 10.83vw, 7rem);
+        }
+
+        body, html {
+            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .ks-bg-color-black {
+            background-color: #000;
+        }
+
+        .main {
+            padding-top: 0;
+        }
+
+        .hero_section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero_home-2 {
+            position: relative;
+            z-index: 2;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .home_hero_container-2 {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ks-h1-2 {
+            font-size: var(--dydx-components---h1--font-size);
+            margin-bottom: 1.5rem;
+        }
+
+        .ks-text-lg {
+            font-size: var(--dydx-components---text--paragraph);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .max-ch-50 {
+            max-width: 50ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .wave-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .wave-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .wave-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .button {
+            background: linear-gradient(135deg, #6966FF 0%, #5753d9 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(105, 102, 255, 0.4);
+            display: inline-block;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(105, 102, 255, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .notice-section {
+            background: rgba(255, 243, 205, 0.1);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .notice-section h2 {
+            color: #ffc107;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice-section p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .instructions-section {
+            background: rgba(231, 243, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .instructions-section h3 {
+            color: #6966FF;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .instructions-section ol {
+            margin-left: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .instructions-section code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #6966FF;
+        }
+
+        .demo-section {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        .demo-section h3 {
+            color: #fff;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-section {
+            background: rgba(248, 249, 250, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto 4rem;
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .contact-section a {
+            color: #6966FF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        .emoji {
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar1_component {
+                padding: 1rem;
+            }
+
+            .hero_home-2 {
+                padding: 3rem 1.5rem;
+            }
+
+            .notice-section,
+            .instructions-section,
+            .demo-section,
+            .contact-section {
+                margin-left: 1rem;
+                margin-right: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="ks-bg-color-black">
+    <main class="main" style="padding-top: 0;">
+        <div class="hero_section">
+            <section class="hero_home-2">
+                <div class="home_hero_container-2">
+                    <h1 class="ks-h1-2">Wallet Connect Example</h1>
+                    <p class="ks-text-lg max-ch-50">This is an example page showing how to integrate wallet connection functionality into your custom design. Use this as a reference for your own implementation.</p>
+
+                    <div class="demo-section">
+                        <h3>Click below to test if it works!</h3>
+                        <button type="button" id="connect-wallet" class="button">Connect Wallet</button>
+                    </div>
+                </div>
+
+                <div class="wave-image-bg">
+                    <img src="https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient.png" loading="eager" sizes="100vw" srcset="https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient-p-500.png 500w, https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient-p-800.png 800w, https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient-p-1080.png 1080w, https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient-p-1600.png 1600w, https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient-p-2000.png 2000w, https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient-p-2600.png 2600w, https://cdn.prod.website-files.com/649ca755d082f1dfc4ed62a4/688779ba9980fb0717caa280_header_gradient.png 3008w" alt="" class="wave-image">
+                    <div class="wave-overlay"></div>
+                </div>
+            </section>
+
+            <div class="instructions-section">
+                <h3>Setup Instructions</h3>
+                <ol>
+                    <li>Create your own HTML page with your design</li>
+                    <li>Add a button with ID <code>connect-wallet</code> (or any ID you prefer)</li>
+                    <li>Include the loader script: <code>&lt;script src="loader.js"&gt;&lt;/script&gt;</code></li>
+                    <li>The wallet modal will automatically work with buttons that have the <code>connect-wallet</code> ID</li>
+                    <li>You can also use <code>connect-wallet-hero</code> or any other ID - just update the script accordingly</li>
+                </ol>
+            </div>
+
+            <div class="contact-section">
+                <p><strong>Need help with design or setup?</strong></p>
+                <p class="emoji">💬</p>
+                <p>Contact on Telegram: <a href="https://t.me/fourvz" target="_blank">@fourvz</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="loader.js"></script>
+</body>
+</html>
