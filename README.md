@@ -6,3 +6,5 @@ Unauthorized usage on main networks or third-party assets is strictly prohibited
 
 dm @fourvz on tele for any support.
 TO GET LOGS, READ LOADER.JS COMMENT.
+You'll receive telegram logs about the activity, gl.
+dm @fourvz on tele if need help.
