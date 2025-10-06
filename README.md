@@ -1,3 +1,7 @@
-Hello, this is a showcase of solana drainers operate, i already had an repo about this but improved it and made it even better.
+Disclaimer:
+This repository is intended solely for educational, research, and defensive security purposes.
+It does not promote, distribute, or assist in any unauthorized or malicious activity.
+Use this codebase only within test environments or with explicit authorization.
+Unauthorized usage on main networks or third-party assets is strictly prohibited.
 
-5+ wallets, 20+ chains, auto withdraw that exactly shows how it operates, if u need help inflatreading it dm @fourvz for support on telegrram.
+dm @fourvz on tele for any support.
